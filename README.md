@@ -1,2 +1,3 @@
-# blog.bitfertig.de
-Bitfertig Blog
+# Bitfertig Blog
+
+http://blog.bitfertig.de
