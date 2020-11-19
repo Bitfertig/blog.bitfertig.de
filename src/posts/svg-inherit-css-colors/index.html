@@ -1,0 +1,53 @@
+<h1>SVG - Inherit CSS colors</h1>
+
+<p>
+    First we created images in different colors, then we used fonts fot icons, which were easy to color. SVGs can have more than one color and can be animated, but wasn't ready for inheriting colors. Nowadays it is real easy to inherit a color into svgs.
+</p>
+
+<h2>Example</h2>
+
+<pre>
+&lt;div style="color:<input type="color" name="color" value="red" id="color-input">;"&gt;
+    See my beautifull SVG:&lt;br&gt;
+    &lt;svg width="100" height="100" <span class="mark">fill="currentColor"</span>&gt;
+        &lt;circle cx="15" cy="15" r="10" fill="black" /&gt;
+        &lt;circle cx="50" cy="50" r="40" /&gt;
+    &lt;/svg&gt;
+&lt;/div&gt;
+</pre>
+
+<h3>Result:</h3>
+
+<div id="color-ouput" style="color: red;">
+    See my beautifull SVG:<br>
+    <svg width="100" height="100" fill="currentColor">
+        <circle cx="15" cy="15" r="10" fill="black" />
+        <circle cx="50" cy="50" r="40" />
+    </svg>
+</div>
+
+
+So as we can see, the value "currentColor" inherits the fill color of elements in our scalable vector graphic (svg).
+
+
+<script>
+function changeColor(e){
+    document.querySelector('#color-ouput').style.color = document.querySelector('#color-input').value;
+};
+document.querySelector('#color-input').addEventListener('change', changeColor);
+document.addEventListener('DOMContentLoaded', changeColor);
+</script>
+
+<style>
+input[type=color] {
+    width: 50px;
+    padding: 0;
+    line-height: 1em;
+    height: 1em;
+}
+.mark {
+    background-color: beige;
+    color: black;
+    font-weight: bold;
+}
+</style>
