@@ -31,28 +31,10 @@ function createPublic() {
 
 
 
-var laravelBladeCompiler = require('laravel-blade-compiler');
+var post = { description:'XOXO' };
 
-var compiledHTML = laravelBladeCompiler({
-    extension: 'html',
-    folder: './src/pages',
-    path: './src/pages/index.blade.html'
-});
-
-var post = { description:'xxx' };
-var regex = /\{\{(.*)\}\}/gi;
-compiledHTML = compiledHTML.replace(regex, function(match, bracket, char_position, content){
-    //console.log(arguments);
-    //changing to ${a};
-    /*
-    '0': '{{ post.language }}',
-    '1': ' post.language ',
-    '2': 29,
-    '3': '<!DOCTYPE html>\r\n<html lang="{{ post.language }}">\r\n'
-    */
-    return '${'+ bracket +'}';
-});
-
+var bladeCompiler = require('@bitfertig/blade-compiler.nodejs');
+var compiledHTML = bladeCompiler({ folder: './src/pages', file: '/index' });
 compiledHTML = eval('`'+compiledHTML+'`');
 
 console.log(compiledHTML);
