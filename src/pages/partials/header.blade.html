@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="{{ $.language }}">
 <head>
+    <title>{{ $.title }} - Bitfertig Blog</title>
+    <base href="/public">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $.title }} - Bitfertig Blog</title>
     <meta name="description" content="{{ $.description }}">
     <meta name="keywords" content="{{ $.keywords }}">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
     
     <header>
-        <img src="logo.svg" alt="Bitfertig">
+        <a href="/"><img src="/static/bitfertig_matrix_400x400.png" alt="Bitfertig"></a>
     </header>

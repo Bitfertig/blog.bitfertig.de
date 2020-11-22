@@ -1,5 +1,5 @@
 {
-    "main": "index.md",
+    "main": "index.html",
     "title": "SVG - Inherit CSS colors",
     "description": "",
     "keywords": ["svg", "inherit", "css", "color"],

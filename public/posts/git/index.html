@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Git - Bitfertig Blog</title>
+    <base href="/public">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    
+    <header>
+        <a href="/"><img src="/static/bitfertig_matrix_400x400.png" alt="Bitfertig"></a>
+    </header>
+
+<h1 id="howtostartwithgit">How to start with Git</h1>
+<h2 id="settingup">Setting up</h2>
+<h3 id="settinguparepobycloning">Setting up a repo by cloning</h3>
+<pre><code class="bash language-bash">git clone https://github.com/rails/rails.git
+</code></pre>
+<h3 id="settinguparepostartingwithalocal">Setting up a repo starting with a local</h3>
+<p>origin is the remote name
+master is the remote branch</p>
+<pre><code class="bash language-bash">git init   # 1. create a local repo
+git remote add origin https://.../repo.git   # 2. add a remote repo
+git checkout origin/master # 3. checkout to remote repo
+</code></pre>
+<h2 id="pullgetchangesfromremoterepo">Pull - Get changes from remote repo</h2>
+<pre><code class="bash language-bash">git pull
+</code></pre>
+<h2 id="pushsendchangestoremoterepo">Push - Send changes to remote repo</h2>
+<pre><code class="bash language-bash">git add *                # 1. add files to a local stage
+git commit -m "message"  # 2. commit staged files to the local repo
+git push                 # 3. push local to remote repo
+</code></pre>
+<h2 id="mergeconflictwithunrelatedhistories">Merge conflict with unrelated histories</h2>
+<p>Ein bestehendes lokales Git-Repo soll mit einem Remote-Repo gemerged werden:</p>
+<h3 id="commitlocalrepo">Commit local repo:</h3>
+<pre><code class="bash language-bash">git add *
+git commit -m "message"
+</code></pre>
+<h3 id="checkouttoremoterepo">Checkout to remote-repo:</h3>
+<pre><code class="bash language-bash">git checkout master
+git merge localmaster --allow-unrelated-histories
+git add *
+git commit -m "resolved merge conflict"
+</code></pre>
+<h2 id="checkoutanewbranchthenmerge">Checkout a new branch, then merge</h2>
+<p>git checkout -b experiment
+git add *
+git commit -m "message"
+git checkout master
+git merge experiment</p>
+<h2 id="lastchangesofafile">Last changes of a file</h2>
+<pre><code class="bash language-bash">git log --oneline README.md
+</code></pre>
+<p>Result:</p>
+<pre><code class="bash language-bash">$ git log --oneline README.md
+88740d8 (HEAD -&gt; main, origin/main) resolved merge conflict
+2d63319 (mylocalbranch) some changes
+6a1816c initial commit
+</code></pre>
+<h2 id="untrackfiles">Untrack files</h2>
+<pre><code class="bash language-bash">git rm --cached &lt;file&gt;
+git rm -r --cached &lt;folder&gt;
+
+git add .
+git commit -m ".gitignore fix"
+git push
+</code></pre>
+
+
+    <footer>
+        <a href="http://www.bitfertig.de/impressum">Impressum</a>
+        <a href="http://www.bitfertig.de/datenschutzerklaerung">Datenschutz</a>
+    </footer>
+
+</body>
+</html>

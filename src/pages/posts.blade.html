@@ -1,5 +1,9 @@
 @include('partials.header')
 
-{{ $.content }}
+<h1>Blogposts</h1>
+
+{{ Object.keys($.posts).map(key => (`<li><a href="/posts/${$.posts[key].slug}">${$.posts[key].json.title}</a></li>`)).join('') }}
+
+
 
 @include('partials.footer')

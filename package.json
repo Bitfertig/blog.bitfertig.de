@@ -23,6 +23,8 @@
   "dependencies": {
     "@bitfertig/blade-compiler.nodejs": "^1.0.1",
     "chokidar": "^3.4.3",
-    "glob": "^7.1.6"
+    "fs-extra": "^9.0.1",
+    "glob": "^7.1.6",
+    "showdown": "^1.9.1"
   }
 }
