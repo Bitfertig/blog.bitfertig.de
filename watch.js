@@ -36,7 +36,7 @@ watcher
     .on('all', function(type, path) {
         let path_consolidated = './'+path.replace(/\\/g, '/');
         if ( path_consolidated.startsWith(path_source_static) ) {
-            changes.status = true;
+            changes.static = true;
             changes.exists = true;
         }
         if ( path_consolidated.startsWith(path_source_pages) ) {
@@ -66,9 +66,9 @@ function update() {
 
     // Static
     if ( changes.static ) {
-        changes.static = false;
         fs.rmdirSync(path_public_static, { recursive: true });
         fse.copySync(path_source_static, path_public_static);
+        changes.static = false;
         //console.log(path_source_static, path_public_static);
     }
 
