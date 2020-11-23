@@ -56,7 +56,7 @@ Dann habe ich unter "Mail Accounts" eine E-Mail-Account angelegt mit aktivierter
 
 Auf der Übersichtsseite drückt man nun auf den Webmailer Button für Roundcube:
 
-![](./img/plesk-webmailer.png "Plesk Webmailer Button")
+![](img/plesk-webmailer.png "Plesk Webmailer Button")
 
 Wenn alles korrekt ist, startet der Webmailer und man kann E-Mails schreiben und empfangen.
 
