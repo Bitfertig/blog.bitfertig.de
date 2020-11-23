@@ -1,9 +1,12 @@
 :root {
     --color-main: #a60000;
+    --color-secondary: #0062ae;
 }
 
 html {
     font-size: 14px; /* = 1rem */
+    line-height: 120%;
+    letter-spacing: 0.025em;
 }
 
 body {
@@ -11,6 +14,10 @@ body {
     font-weight: 300;
     padding: 0;
     margin: 0;
+
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 header {
@@ -18,11 +25,12 @@ header {
     justify-content: center;
     padding: 30px 0;
     border-bottom: 1px solid var(--color-main);
-    margin-bottom: 40px;
+    margin: 0 30px 50px 30px;
 }
 header a.blog-logo {
     text-decoration: none;
     color: var(--color-main);
+    text-align: center;
 }
 header a.blog-logo img {
 
@@ -33,18 +41,35 @@ header a.blog-logo .blog-title {
     line-height: 150%;
     font-family: Georgia, serif;
     font-weight: 700;
+    text-transform: uppercase;
 }
 
 
+main {
+    margin: 0 30px;
+
+    flex: 1;
+}
+main a {
+    color: var(--color-secondary);
+}
+.main-meta {
+    margin: 30px 30px;
+    font-size: 0.8em;
+    font-style: italic;
+    text-align: right;
+    color: silver;
+}
 
 
 footer {
     display: flex;
     justify-content: center;
     border-top: 1px solid var(--color-main);
-    margin-top: 40px;
     padding-top: 30px;
     padding-bottom: 30px;
+    margin: 40px 30px 0 30px;
+    font-size: 0.9em;
 }
 footer a {
     padding: 10px 15px;

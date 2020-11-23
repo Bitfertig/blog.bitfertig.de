@@ -1,5 +1,13 @@
 @include('partials.header')
 
+<main>
 {{ $.content }}
+</main>
+
+<div class="main-meta">
+    Geschrieben von {{ $.authors.join(', ') }}<br>
+    Erstellt am {{ $.created_at }}
+</div>
+
 
 @include('partials.footer')

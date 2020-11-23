@@ -9,8 +9,10 @@ git clone https://github.com/rails/rails.git
 ```
 
 ### Setting up a repo starting with a local
-origin is the remote name
-master is the remote branch
+
+- **origin** is the remote name (it is set with adding a remote)
+- **master** is the remote branch
+
 ```bash
 git init   # 1. create a local repo
 git remote add origin https://.../repo.git   # 2. add a remote repo
@@ -23,12 +25,35 @@ git checkout origin/master # 3. checkout to remote repo
 git pull
 ```
 
+## Stage / Unstage
+```bash
+git add . # Stage all
+git add file.txt
+git reset . # Unstage all staged
+git reset --hard # Unstage and DELETES changes.
+```
+
 
 ## Push - Send changes to remote repo
 ```bash
 git add *                # 1. add files to a local stage
 git commit -m "message"  # 2. commit staged files to the local repo
 git push                 # 3. push local to remote repo
+```
+
+## Stash
+Stash is for saving stuff that is not ready yet, but you dont want to commit it.
+```bash
+git stash     # Saving current changes and revert back to a clean working directory
+git stash pop # Getting your stuff back
+```
+
+## Branch
+
+```bash
+git branch  # Get branches info
+git checkout my_existing_branch # Just load the branch into working directory
+git checkout -b my_new_branch # Create new branch
 ```
 
 ## Merge conflict with unrelated histories
@@ -49,12 +74,13 @@ git commit -m "resolved merge conflict"
 ```
 
 ## Checkout a new branch, then merge
+```bash
 git checkout -b experiment
 git add *
 git commit -m "message"
 git checkout master
 git merge experiment
-
+```
 
 
 

@@ -18,14 +18,17 @@
         </a>
     </header>
 
+<main>
 <h1 id="howtostartwithgit">How to start with Git</h1>
 <h2 id="settingup">Setting up</h2>
 <h3 id="settinguparepobycloning">Setting up a repo by cloning</h3>
 <pre><code class="bash language-bash">git clone https://github.com/rails/rails.git
 </code></pre>
 <h3 id="settinguparepostartingwithalocal">Setting up a repo starting with a local</h3>
-<p>origin is the remote name
-master is the remote branch</p>
+<ul>
+<li><strong>origin</strong> is the remote name (it is set with adding a remote)</li>
+<li><strong>master</strong> is the remote branch</li>
+</ul>
 <pre><code class="bash language-bash">git init   # 1. create a local repo
 git remote add origin https://.../repo.git   # 2. add a remote repo
 git checkout origin/master # 3. checkout to remote repo
@@ -33,10 +36,26 @@ git checkout origin/master # 3. checkout to remote repo
 <h2 id="pullgetchangesfromremoterepo">Pull - Get changes from remote repo</h2>
 <pre><code class="bash language-bash">git pull
 </code></pre>
+<h2 id="stageunstage">Stage / Unstage</h2>
+<pre><code class="bash language-bash">git add . # Stage all
+git add file.txt
+git reset . # Unstage all staged
+git reset --hard # Unstage and DELETES changes.
+</code></pre>
 <h2 id="pushsendchangestoremoterepo">Push - Send changes to remote repo</h2>
 <pre><code class="bash language-bash">git add *                # 1. add files to a local stage
 git commit -m "message"  # 2. commit staged files to the local repo
 git push                 # 3. push local to remote repo
+</code></pre>
+<h2 id="stash">Stash</h2>
+<p>Stash is for saving stuff that is not ready yet, but you dont want to commit it.</p>
+<pre><code class="bash language-bash">git stash     # Saving current changes and revert back to a clean working directory
+git stash pop # Getting your stuff back
+</code></pre>
+<h2 id="branch">Branch</h2>
+<pre><code class="bash language-bash">git branch  # Get branches info
+git checkout my_existing_branch # Just load the branch into working directory
+git checkout -b my_new_branch # Create new branch
 </code></pre>
 <h2 id="mergeconflictwithunrelatedhistories">Merge conflict with unrelated histories</h2>
 <p>Ein bestehendes lokales Git-Repo soll mit einem Remote-Repo gemerged werden:</p>
@@ -51,11 +70,12 @@ git add *
 git commit -m "resolved merge conflict"
 </code></pre>
 <h2 id="checkoutanewbranchthenmerge">Checkout a new branch, then merge</h2>
-<p>git checkout -b experiment
+<pre><code class="bash language-bash">git checkout -b experiment
 git add *
 git commit -m "message"
 git checkout master
-git merge experiment</p>
+git merge experiment
+</code></pre>
 <h2 id="lastchangesofafile">Last changes of a file</h2>
 <pre><code class="bash language-bash">git log --oneline README.md
 </code></pre>
@@ -73,11 +93,20 @@ git add .
 git commit -m ".gitignore fix"
 git push
 </code></pre>
+</main>
+
+<div class="main-meta">
+    Geschrieben von Aurelian Hermand<br>
+    Erstellt am 2020-10-21
+</div>
+
 
 
     <footer>
+        <a href="http://www.bitfertig.de">www.bitfertig.de</a>
         <a href="http://www.bitfertig.de/impressum">Impressum</a>
         <a href="http://www.bitfertig.de/datenschutzerklaerung">Datenschutz</a>
+        <a href="https://github.com/Bitfertig/blog.bitfertig.de">GitHub</a>
     </footer>
 
 </body>

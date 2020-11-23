@@ -4,6 +4,7 @@
     "description": "",
     "keywords": ["svg", "inherit", "css", "color"],
     "language": "en",
+    "authors": ["Aurelian Hermand"],
     "created_at": "2020-11-18",
     "updated_at": "2020-11-18",
     "status": "published"
