@@ -109,3 +109,10 @@ git add .
 git commit -m ".gitignore fix"
 git push
 ```
+
+## Reset to a commit-hash
+Carefull, all commits after this commit-hash will be gone.
+```bash
+git reset --hard <commit-hash>
+git push -f origin master
+```
