@@ -5,7 +5,7 @@
 ### Setting up a repo by cloning
 
 ```bash
-git clone https://github.com/rails/rails.git
+git clone https://github.com/repo/repo.git
 ```
 
 ### Setting up a repo starting with a local
