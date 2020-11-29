@@ -2,12 +2,15 @@
 <html lang="en">
 <head>
     <title>Git - Bitfertig Blog</title>
+
+    <link rel="icon" href="/static/favicon.png">
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="keywords" content="">
     <link rel="stylesheet" href="/static/style.css">
+    <script data-ad-client="ca-pub-3809977409157715" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 <body>
     
@@ -22,7 +25,7 @@
 <h1 id="howtostartwithgit">How to start with Git</h1>
 <h2 id="settingup">Setting up</h2>
 <h3 id="settinguparepobycloning">Setting up a repo by cloning</h3>
-<pre><code class="bash language-bash">git clone https://github.com/rails/rails.git
+<pre><code class="bash language-bash">git clone https://github.com/repo/repo.git
 </code></pre>
 <h3 id="settinguparepostartingwithalocal">Setting up a repo starting with a local</h3>
 <ul>
@@ -93,6 +96,11 @@ git add .
 git commit -m ".gitignore fix"
 git push
 </code></pre>
+<h2 id="resettoacommithash">Reset to a commit-hash</h2>
+<p>Carefull, all commits after this commit-hash will be gone.</p>
+<pre><code class="bash language-bash">git reset --hard &lt;commit-hash&gt;
+git push -f origin master
+</code></pre>
 </main>
 
 <div class="main-meta">
@@ -108,6 +116,15 @@ git push
         <a href="http://www.bitfertig.de/datenschutzerklaerung">Datenschutz</a>
         <a href="https://github.com/Bitfertig/blog.bitfertig.de">GitHub</a>
     </footer>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JVHM2MRB5W"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-JVHM2MRB5W', { 'anonymize_ip': true });
+</script>
 
 </body>
 </html>
