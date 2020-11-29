@@ -5,14 +5,14 @@ name: CI
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
-#  push:
-#    branches: [ main ]
-#    paths-ignore:
-#    - '.github/**'
-#    - 'src/**'
-#    - 'README.md'
-#  pull_request:
-#    branches: [ main ]
+  push:
+    branches: [ main ]
+    paths-ignore:
+    - '.github/**'
+    - 'src/**'
+    - 'README.md'
+  pull_request:
+    branches: [ main ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -34,8 +34,4 @@ jobs:
           ftp-server: ${{ secrets.FTP_SERVER }}/blog.bitfertig.de/
           ftp-username: ${{ secrets.FTP_USERNAME }}
           ftp-password: ${{ secrets.FTP_PASSWORD }}
-#      - name: curl
-#        uses: wei/curl@master
-#        with:
-#          args: http://blog.bitfertig.de/worker.php
 

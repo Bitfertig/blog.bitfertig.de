@@ -18,7 +18,7 @@ const path_public_posts = path_public + '/posts';
 const path_public_static = path_public + '/static';
 
 
-
+// Changes
 var changes = {
     exists: false,
     static: false,
