@@ -1,0 +1,77 @@
+<h1>Solar-Balkonkraftwerk</h1>
+
+<p>Das Balkonkraftwerk hat mich ca. 900 € gekostet.</p>
+<p>Mittels FRITZ!Box Smart Home "FRITZ!DECT 210" überwache ich den "Verbrauch", wobei der Verbrauch die Stromzuführung ins Hausnetz ist.
+</p>
+
+
+<div id="statistics"></div>
+
+
+
+<img src="./img/euro.png" alt="" style="max-width:100%;">
+<br>
+<img src="./img/kwh.png" alt="" style="max-width:100%;">
+<br>
+
+<p>Die Ausrichtung war im ersten Jahr nicht optimal, ich hatte teilweise Schatten.</p>
+
+<p><b>To be continued ...</b></p>
+
+<script>
+
+const csvToJson = (str, headerList, quotechar = '"', delimiter = ';') => {
+    const cutlast = (_, i, a) => i < a.length - 1;
+    // const regex = /(?:[\t ]?)+("+)?(.*?)\1(?:[\t ]?)+(?:,|$)/gm; // no variable chars
+    const regex = new RegExp(`(?:[\\t ]?)+(${quotechar}+)?(.*?)\\1(?:[\\t ]?)+(?:${delimiter}|$)`, 'gm');
+    const lines = str.split('\n');
+    const headers = headerList || lines.splice(0, 1)[0].match(regex).filter(cutlast);
+    const list = [];
+    for (const line of lines) {
+        const val = {};
+        for (const [i, m] of [...line.matchAll(regex)].filter(cutlast).entries()) {
+        // Attempt to convert to Number if possible, also use null if blank
+        val[headers[i]] = (m[2].length > 0) ? Number(m[2]) || m[2] : null;
+        }
+        list.push(val);
+    }
+    return list;
+}
+
+
+fetch('verbrauch.csv').then((response) => response.text()).then((responseText) => {
+    update(responseText);
+});
+function update(csv) {
+
+    let json = csvToJson(csv, [0,1,2,3,4,5,6]);
+    console.log(json);
+
+    let kwh = 0;
+    let eur = 0;
+    let co2 = 0;
+
+    let table = '<table style="width:100%;">';
+    for(let row_i in json) {
+        let row = json[row_i];
+        table += '<tr>';
+        table += '<td>' + (row[0] ?? '') + '</td>';
+        table += '<td style="text-align:right;"><b>' + (row[1] ?? '') + '</b> ' + (row[2] ?? '') + '</td>';
+        table += '<td style="text-align:right;"><b>' + (row[3] ?? '') + '</b> ' + (row[4] ?? '') + '</td>';
+        table += '<td style="text-align:right;"><b>' + (row[5] ?? '') + '</b> ' + (row[6] ?? '') + '</td>';
+        table += '</tr>';
+        _kwh = Number((row[1] ?? '0').replace(',', '.')); if ( !isNaN(_kwh) ) kwh += _kwh;
+        _eur = Number((row[3] ?? '0').replace(',', '.')); if ( !isNaN(_eur) ) eur += _eur;
+        _co2 = Number((row[5] ?? '0').replace(',', '.')); if ( !isNaN(_co2) ) co2 += _co2;
+    }
+    table += '<tr>';
+    table += '<td></td>';
+    table += '<th style="text-align:right;">' + (kwh).toFixed(2) + '</th>';
+    table += '<th style="text-align:right;">' + (eur).toFixed(2) + '</th>';
+    table += '<th style="text-align:right;">' + (co2).toFixed(2) + '</th>';
+    table += '</tr>';
+    table += '</table>';
+
+    document.querySelector('#statistics').innerHTML = table;
+}
+</script>
