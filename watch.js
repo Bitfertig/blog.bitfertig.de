@@ -11,17 +11,17 @@ const duration = 2000; // Update only every 1 seconds
 const path_source = './src';
 const path_source_pages = path_source + '/pages';
 const path_source_posts = path_source + '/posts';
-const path_source_static = path_source + '/static';
+const path_source_root = path_source + '/root';
 const path_public = './public';
 const path_public_pages = path_public + '/pages';
 const path_public_posts = path_public + '/posts';
-const path_public_static = path_public + '/static';
+const path_public_root = path_public + '/';
 
 
 // Changes
 var changes = {
     exists: false,
-    static: false,
+    root: false,
     pages: false, // => recreate all public pages and posts
     posts: [], // => recreate only post and home
 }
@@ -35,8 +35,8 @@ var watcher = chokidar.watch(path_source, {
 watcher
     .on('all', function(type, path) {
         let path_consolidated = './'+path.replace(/\\/g, '/');
-        if ( path_consolidated.startsWith(path_source_static) ) {
-            changes.static = true;
+        if ( path_consolidated.startsWith(path_source_root) ) {
+            changes.root = true;
             changes.exists = true;
         }
         if ( path_consolidated.startsWith(path_source_pages) ) {
@@ -64,12 +64,12 @@ setInterval(update, duration);
 function update() {
     fs.mkdirSync(path_public, { recursive: true });
 
-    // Static
-    if ( changes.static ) {
-        fs.rmdirSync(path_public_static, { recursive: true });
-        fse.copySync(path_source_static, path_public_static);
-        changes.static = false;
-        //console.log(path_source_static, path_public_static);
+    // Root
+    if ( changes.root ) {
+        fs.rmdirSync(path_public_root, { recursive: true });
+        fse.copySync(path_source_root, path_public_root);
+        changes.root = false;
+        //console.log(path_source_root, path_public_root);
     }
 
     let posts = [];
