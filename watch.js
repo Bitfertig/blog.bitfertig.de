@@ -70,11 +70,12 @@ function update() {
         fse.copySync(path_source_root, path_public_root);
         changes.root = false;
         //console.log(path_source_root, path_public_root);
+        var deleted = true;
     }
 
     let posts = [];
 
-    if ( changes.exists ) {
+    if ( changes.exists || deleted ) {
         console.log('Change incoming ...');
 
         if ( changes.pages || changes.posts ) { // now transform post.blade.html
@@ -128,7 +129,7 @@ function update() {
             changes.posts = [];
         }
 
-        if ( changes.pages ) {
+        if ( changes.pages || deleted ) {
             let files = glob.sync(path_source_pages+'/*.blade.html');
             //console.log(files);
             // TODO: Read files in pages/*
